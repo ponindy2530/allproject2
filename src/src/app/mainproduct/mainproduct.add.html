@@ -1,0 +1,111 @@
+<div class="container">
+ 
+ <div class="card" style="margin:20px;padding: 20px">  <div class="row">
+    <div class="col-sm-4">
+<div class="card" style="padding:20px">
+  <form class="form-inline">
+   
+    <div class="form-group row">
+     
+      <div class="col-xs-12 ">
+        <input class="form-control" [(ngModel)]="txtSearch" name="txtSearch"  (ngModelChange)="doLowertxt(txtSearch)" type="text" placeholder="Search"> 
+      </div>
+    </div>
+  </form>
+</div>
+<div style="height:400px;overflow: auto;">
+      <ul class="list-group">
+  <li class="list-group-item" *ngFor="let m of (models|search:txtSearch:'mname')" >
+    <span class="tag tag-default tag-pill float-xs-right"> {{m.numnow}} </span>
+  <a href="javascript:void(0)" (click)="setMid(m)"> {{m.mname}}  </a></li>
+  
+</ul>
+</div>
+    </div>
+      <div class="col-sm-8">
+  <p-panel header="บันทึกรายการวัสดุทันตกรรม">
+  
+  
+    <form (ngSubmit)="onSubmit(productlist.value)" #productlist="ngForm">
+       
+ 
+    <div>
+
+<div class="form-group row">
+      <label class="col-sm-3 col-form-label" for="mcode">รหัสวัสดุทันตกรรม</label>
+   <div class="col-sm-9">   <input #mcode="" [(ngModel)]="model.mcode" id="mcode" name="mcode" type="text" class="form-control" placeholder="รหัสวัสดุทันตกรรม">
+  </div>  </div>
+
+<div class="form-group row">
+      <label class="col-sm-3 col-form-label" for="mname">ชื่อวัสดุทันตกรรม</label>
+    <div class="col-sm-9">   <input #mname="" [(ngModel)]="model.mname" id="mname" name="mname" type="text" class="form-control" placeholder="ชื่อวัสดุทันตกรรม">
+    </div>
+</div>
+
+<div class="form-group row">
+      <label class="col-sm-3 col-form-label" for="munit">หน่วยนับ</label>
+     <div class="col-sm-9"> 
+             <p-autoComplete [(ngModel)]="model.munit" name ="munit" [suggestions]="funits" (completeMethod)="searchUnit($event)" field="munit"></p-autoComplete>
+        
+              </div>
+</div>
+
+<div class="form-group row">
+      <label class="col-sm-3 col-form-label" for="munit">หมวดหมู่</label>
+   <div class="col-sm-9">      <select class="form-control" [(ngModel)]="model.catid" name="catid">
+  <option *ngFor="let c of (categories)" [value]="c.catid">{{c.catname}}</option>  
+</select>
+      </div>
+</div>
+
+
+<div class="form-group row">
+      <label class="col-sm-3 col-form-label" for="numnow">จำนวนคงเหลือ</label>
+     <div class="col-sm-9">  <input #numnow="" [(ngModel)]="model.numnow" id="numnow" name="numnow" type="number" class="form-control" placeholder="จำนวนคงเหลือ">
+    </div>
+</div>
+<div class="form-group row">
+      <label class="col-sm-3 col-form-label" for="tag">Tag:</label>
+     <div class="col-sm-9">  <input #tag="" [(ngModel)]="model.tag" id="tag" name="tag" type="text" class="form-control" placeholder="tag">
+    </div>
+</div>
+
+ <div class="form-group row" align="center">
+       <button type="submit" class="btn btn-default" [disabled]="!productlist.form.valid">บันทึก</button> 
+       <button type="button" class="btn btn-default" (click)="onCancel()" >ยกเลิก</button>
+    </div>
+</div></form></p-panel>
+<div class="card">
+<p-panel header="รายการเพิ่มใหม่" [toggleable]="true" *ngIf="displayNewPd"  >
+<table class="table table-bordered">
+  <thead>
+   <tr>
+      <th>ลำดับ</th>
+      <th>ID</th>
+      <th>รหัสวัสดุ</th>
+      <th>ชื่อ</th>
+      <th>หมวดหมู่</th>
+      <th>จำนวนในStock</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of (tempproducts);let i=index;">
+      <td>{{i+1}}</td>
+      <td>{{p.mid}}</td>
+      <td>{{p.mcode}}</td>
+      <td>{{p.mname}}</td>
+       <td>{{p.catname}}</td>
+       <td>{{p.numnow}}</td>
+      
+    </tr>
+
+  </tbody>
+</table>
+</p-panel>
+</div>
+</div></div></div>
+
+
+
+</div>

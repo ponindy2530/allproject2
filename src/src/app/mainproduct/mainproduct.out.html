@@ -1,0 +1,41 @@
+
+<ul class="nav nav-pills" style="margin:10px">
+  <li class="nav-item">
+    <a class="nav-link active btn btn-secondary" routerLinkActive="active" routerLink="../mainproductoutadd/0">เพิ่มรายการเบิกวัสดุ</a>
+  </li>
+
+  
+</ul>
+
+
+
+
+<p-dataTable #dt [value]="stockouts" [rows]="20" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[5,10,20]">
+
+
+<p-column header="ลำดับ" [style]="{'width':'60px'}">
+
+
+    <template let-col let-rowData="rowData" let-rowIndex="rowIndex" pTemplate="body">
+      {{rowIndex+1}}
+    </template>
+  </p-column>
+
+  <p-column field="datestockout" header="วันที่เบิกของ" [sortable]="true"  [style]="{'width':'160px'}"></p-column>
+
+  <p-column field="mcode" header="รหัสวัสดุ" [sortable]="true" [filter]="true" filterMatchMode="contains" [style]="{'width':'160px'}"></p-column>
+  <p-column field="mname" header="ชื่อวัสดุ" [sortable]="true" [filter]="true" filterMatchMode="contains" [style]="{'width':'160px'}"></p-column>
+   <p-column field="numnow" header="จำนวนในคลัง" [style]="{'width':'160px'}"></p-column>
+  <p-column field="numstockout" header="จำนวนเบิก" [style]="{'width':'160px'}"></p-column>
+  <p-column field="rcname" header="ผู้เบิก" [sortable]="true" [filter]="true" filterMatchMode="contains" [style]="{'width':'160px'}"></p-column>
+ 
+  <p-column styleClass="col-button" [style]="{'width':'60px'}">
+    <template pTemplate="header">
+      ลบ
+    </template>
+    <template let-r="rowData" pTemplate="body">
+      <button class="btn btn-sm btn-danger" (click)="confirmDelete(r)">Del</button>
+    </template>
+  </p-column>
+</p-dataTable>
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>

@@ -1,0 +1,122 @@
+<div class="navbar">
+    <div class="navbar-inner" style="background-color:#0057e7;">
+        <div class="navbar-container">
+            <!-- Navbar Barnd -->
+            <div class="navbar-header pull-left">
+                <a href="#" class="navbar-brand wave in" style="margin-top: 7px;">
+                    <small>
+                    <span class="{{appicon}}"></span> {{apptitle}}
+                </small>
+                </a>
+            </div>
+
+            <!--<a routerLink="/logout" *ngIf="!cklogin" routerLinkActive="active" class="btn btn-default pull-right" style="margin-top: 7px;margin-right:5px;"><i class="fa fa-unlock"></i> ออกจากระบบ</a>
+            <a  *ngIf="cklogin"  class="btn btn-primary pull-right" style="margin-top: 7px;margin-right:5px;"><i class="fa fa-lock"></i> เข้าสู่ระบบ</a>-->
+
+            <!--<ul class="nav navbar-nav navbar-right" style="margin-right: 20px;">
+                <li><a routerLink="/repair" routerLinkActive="active" class="textcol"><span class="fa fa-university"></span>  แจ้งปัญหา/แจ้งซ่อม</a></li>
+                <li><a routerLink="/adminrepair" routerLinkActive="active" class="textcol"><span class="fa fa-university"></span>  ข้อมูลการทำงาน</a></li>
+                <li><a routerLink="/matiral" routerLinkActive="active" class="textcol"><span class="fa fa-book"></span> ทะเบียนครุภัณฑ์</a></li>
+                <li>
+                    <a routerLink="/menu" routerLinkActive="active" class="textcol"><span class="fa fa-book"></span> รายงาน</a>
+                </li>
+                <li class="dropdown active"><a class="dropdown-toggle textcol" href="#" data-toggle="dropdown"><span class="fa fa-cogs"></span> ตั้งค่า <b class="caret"></b></a>
+                    <ul id="setting_drop" class="dropdown-menu">
+                        <li><a routerLink="/mcgroup" routerLinkActive="active"><span class="fa fa-send"> </span>จัดการหมวดครุภัณฑ์</a></li>
+                        <li><a routerLink="/mctype" routerLinkActive="active"><span class="fa fa-file-text"> </span>จัดการชนิดครุภัณฑ์</a></li>
+                        <li><a routerLink="/mcattribute" routerLinkActive="active"><span class="fa fa-cube"> </span>จัดการชื่อครุภัณฑ์</a></li>
+                        <li><a routerLink="/repair" routerLinkActive="active"><span class="fa fa-user-secret"> </span>สมาชิกในหน่วยงาน</a></li>
+                    </ul>
+                </li>
+                <!--<li id="btn-user-info" style="cursor:pointer; margin: 5px 15px 5px 10px;" data-url="/sign-in/show-user-panel"><img class="img-rounded" src="/img/anonymous.jpg" width="40" height="40" alt=""></li>-->
+            <!--</ul>-->
+            <div class="navbar-header pull-right">
+                <div class="navbar-account">
+                    <ul class="account-area">
+                        <!--<li>
+                            <a routerLink="/repair" routerLinkActive="active" style="margin-right:10px;" class=" dropdown-toggle wave in" data-toggle="dropdown" title="Notifications" aria-expanded="false">
+                                <i class="icon fa fa-bell"> แจ้งปัญหา/แจ้งซ่อม</i>
+                            </a>
+                        </li>-->
+                        <li class="dropdown">
+                            <a class=" dropdown-toggle wave in" data-toggle="dropdown" style="margin-right:20px;" title="Notifications" href="#" aria-expanded="false">
+                                <i class="icon fa fa-th-list"> รายงาน</i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a routerLink="/main" routerLinkActive="active"> <i class="icon fa fa-exchange"> บัญชีรายการวัสดุทันตกรรม</i></a>
+                                </li>
+                              
+                                <!--<li>
+                                    <a routerLink="/matiral" routerLinkActive="active"> <i class="icon fa fa-th-list"> ทะเบียนครุภัณฑ์</i></a>
+                                </li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li>-->
+                            </ul>
+                        </li>
+                        <li>
+                            <a routerLink="/AdminPasscode" routerLinkActive="active" style="margin-right:20px;" class=" dropdown-toggle wave in" data-toggle="dropdown" title="Notifications" aria-expanded="false">
+                                <i class="icon fa fa-user-secret"> ผู้ดูแลระบบ</i>
+                            </a>
+                        </li>
+                        <!--<li class="dropdown">
+                            <a class=" dropdown-toggle wave in" data-toggle="dropdown" style="margin-right:10px;" title="Notifications" href="#" aria-expanded="false">
+                                <i class="icon fa fa-user-secret"> ผู้ดูแลระบบ</i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a routerLink="/adminrepair" routerLinkActive="active"> <i class="icon fa fa-bell"> รายการแจ้งปัญหา/แจ้งซ่อม</i></a>
+                                </li>
+                                <li>
+                                    <a routerLink="/matiral" routerLinkActive="active"> <i class="icon fa fa-th-list"> ทะเบียนครุภัณฑ์</i></a>
+                                </li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </li>-->
+                        <!--<li class="dropdown">
+                            <a class=" dropdown-toggle wave in" data-toggle="dropdown" style="margin-right:10px;" title="Notifications" href="#" aria-expanded="false">
+                                <i class="icon fa fa-cogs"> รายงาน</i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="drop2">
+                                <li><a routerLink="/mcgroup" routerLinkActive="active"><span class="fa fa-send"></span> จัดการหมวดครุภัณฑ์</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </li>-->
+                        <!--<li class="dropdown">
+                            <a class=" dropdown-toggle wave in" data-toggle="dropdown" style="margin-right:10px;" title="Notifications" href="#" aria-expanded="false">
+                                <i class="icon fa fa-cogs"> ตั้งค่าระบบ</i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="drop2">
+                                <li><a routerLink="/mcgroup" routerLinkActive="active"><span class="fa fa-send"></span> จัดการหมวดครุภัณฑ์</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </li>-->
+                    </ul>
+                    <!-- Settings -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Navbar -->
+<!-- Main Container -->
+
+<!-- Main Container -->
+<div class="main-container container-fluid">
+    <!-- Page Container -->
+    <div class="page-body">
+        <router-outlet></router-outlet>
+    </div>
+    <!-- /Page Container -->
+    <!-- Main Container -->
+
+</div>

@@ -1,0 +1,23 @@
+ 
+  <p-growl [value]="msgs" life="1000" ></p-growl>
+<p-dataTable [value]="mproducts" [editable]="true" [rows]="20" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[5,10,20]">
+    
+     <p-column field="genname" header="ชื่อทั่วไป" [editable]="true" [style]="{'font-size':'0.8em'}"></p-column>
+    <p-column field="mcode" header="รหัสวัสดุ"  [sortable]="true" [filter]="true" filterMatchMode="contains"  [style]="{'font-size':'0.8em'}" [editable]="true"></p-column>
+    <p-column field="mname" header="ชื่อวัสดุ"  [sortable]="true" [filter]="true" filterMatchMode="contains"  [style]="{'font-size':'0.8em'}" [editable]="true"></p-column>
+   
+    <p-column field="munit" header="หน่วยนับ" [editable]="true" [style]="{'font-size':'0.8em'}"></p-column>
+     <p-column field="numnow" header="คงเหลือ" [editable]="true" [style]="{'font-size':'0.8em'}"></p-column>
+       <p-column field="pricen59" header="ราตาเฉลี่ย59" [editable]="true" [style]="{'font-size':'0.8em'}"></p-column>
+    <p-column field="nummin" header="จำนวนต่ำสุด" [editable]="true" [style]="{'font-size':'0.8em'}"></p-column>
+    <p-column styleClass="col-button" [style]="{'width':'80px'}">
+        <template pTemplate="header">
+           ปรับปรุง
+        </template>
+        <template let-p="rowData" pTemplate ="body">
+            <button type="button" class="btn btn-sm btn-info" (click)="doMainproduct(p)" >บันทึก</button>
+            
+        </template>
+    </p-column>
+<p-column field="lastupdate" header="lastupdate" [style]="{'font-size':'0.8em'}"></p-column>
+</p-dataTable>

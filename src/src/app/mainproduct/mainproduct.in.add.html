@@ -1,0 +1,268 @@
+<div class="container">
+    <div class="row">
+        <p-dialog header="เครื่องคิดเลข" [(visible)]="displayDialogCal" [responsive]="true" showEffect="fade" [modal]="true">
+            <js-calculator></js-calculator>
+            <button class="btn btn-primary" (click)="CalClose()">close</button>
+        </p-dialog>
+        <div style="margin:10px"> <button (click)="CalOpen()">เครื่องคิดเลข</button>
+
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card" style="padding:20px">
+                    <form class="form-inline">
+
+                        <div class="form-group row">
+
+                            <div class="col-xs-12 ">
+                                <input class="form-control" [(ngModel)]="txtSearch" name="txtSearch" (ngModelChange)="doLowertxt(txtSearch)" type="text" placeholder="Search">
+                                <button type="button" class="btn btn-outline-danger" (click)="doClearTxtSearch()">X</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div style="margin:16px">
+                    <span class="custom-control-description">Filter บริษัท</span>
+                    <p-checkbox [(ngModel)]="isSupidFilter" binary="true" (onChange)="doFilterSupid()"></p-checkbox>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let m of (mproductSups|search:txtSearch:'mname'|searchId:fdSearchId:'supid')">
+                        <span class="tag tag-default tag-pill float-xs-right"> {{m.numnow}} </span>
+                        <a href="javascript:void(0)" (click)="setMid(m)"> {{m.mname}}  </a></li>
+
+                </ul>
+            </div>
+            <div class="col-sm-8">
+                <div class="panel" style="margin:5px">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">บันทึกเพิ่มรับเข้าวัสดุทันตกรรม</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <hr>
+                <div *ngIf="isAddNewSupplier" class="card">
+                    <div class="card-blog" style="margin:20px">
+                        <h3>บันทึกเพิ่มรายการบริษัท {{supplier.supname}}{{sp.supname}}</h3>
+
+                        <form (ngSubmit)="onSubmitAddSupplier()" #suppliernew="ngForm">
+
+
+                            <div>
+
+
+
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" for="supname">ชื่อบริษัท{{supplier.supname}}</label>
+                                    <div class="col-sm-9"> <input #supname [(ngModel)]="supplier.supname" (blur)="onBlurSupname(supname.value)" name="supname" type="text" class="form-control" placeholder="ชื่อบริษัท">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" for="address">ที่อยู่</label>
+                                    <div class="col-sm-9"> <input [(ngModel)]="supplier.address" name="address" type="text" class="form-control" placeholder="ที่อยู่">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" for="tel">Tel</label>
+                                    <div class="col-sm-9"> <input [(ngModel)]="supplier.tel" name="tel" type="text" class="form-control" placeholder="Tel">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row" align="center">
+                                    <button type="submit" class="btn btn-default">บันทึก</button>
+                                    <button type="button" class="btn btn-default" (click)="onCancelNewSupplier()">ยกเลิก</button>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <hr>
+
+                <div *ngIf="isAddNewProduct" class="card" style="margin:20px">
+                    <h2>บันทึกเพิ่มรายการวัสดุทันตกรรม</h2>
+
+                    <form (ngSubmit)="onSubmitAddProduct()" #product="ngForm">
+
+
+                        <div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" for="mcode">รหัสวัสดุทันตกรรม</label>
+                                <div class="col-sm-6"> <input [(ngModel)]="newproduct.mcode" id="mcode" name="mcode" type="text" class="form-control" placeholder="รหัสวัสดุทันตกรรม">
+                                </div>
+                                <div class="col-sm-3"> <label class="custom-control custom-checkbox">
+  <input type="checkbox" [(ngModel)]="isSetupProduct" class="custom-control-input"  name = "isSetupProduct" (change)="doSetProduct($event)" >
+  <span class="custom-control-indicator"></span>
+  <span class="custom-control-description">Filter บริษัท</span>
+</label> <a href="javascript:void(0)" (click)="getLastStockIn()"> Last Data</a>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" for="mname">ชื่อวัสดุทันตกรรม</label>
+                                <div class="col-sm-9"> <input #mname="" [(ngModel)]="newproduct.mname" id="mname" name="mname" type="text" class="form-control" placeholder="ชื่อวัสดุทันตกรรม" (blur)="onBlurMname(mname.value)">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" for="munit">หน่วยนับ</label>
+                                <div class="col-sm-9">
+                                    <input [(ngModel)]="newproduct.munit" type="text" id="munit" name="munit" class="form-control" />
+
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" for="catid">หมวดหมู่</label>
+                                <div class="col-sm-9"> <select class="form-control" [(ngModel)]="newproduct.catid" name="catid">
+  <option *ngFor="let c of (categories)" [value]="c.catid">{{c.catname}}</option>  
+</select>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" for="numnow">จำนวนคงเหลือ</label>
+                                <div class="col-sm-9"> <input #numnow="" [(ngModel)]="newproduct.numnow" id="numnow" name="numnow" type="number" class="form-control" placeholder="จำนวนคงเหลือ">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" for="pricen59">ราคา/หน่วย(บาท)</label>
+                                <div class="col-sm-9"> <input #pricen59="" [(ngModel)]="newproduct.pricen59" id="pricen59" name="pricen59" type="number" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" for="stockvalue">มูลค่าคงคลัง(บาท)</label>
+                                <div class="col-sm-9"> <input #stockvalue="" [(ngModel)]="newproduct.stockvalue" id="stockvalue" name="stockvalue" type="number" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" for="tag">Tag:</label>
+                                <div class="col-sm-9"> <input #tag="" [(ngModel)]="newproduct.tag" id="tag" name="tag" type="text" class="form-control" placeholder="tag">
+                                </div>
+                            </div>
+
+                            <div class="form-group row" align="center">
+                                <button type="submit" class="btn btn-default">บันทึก</button>
+                                <button type="button" class="btn btn-default" (click)="onCancelNewProduct()">ยกเลิก</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <hr>
+
+                <form (ngSubmit)="onSubmit()" #productlist="ngForm">
+
+
+                    <div class="card" style="padding:20px;background-color:#d3d3d3">
+                        <div class="card-header ">
+                            <div class="form-group row">
+
+                                <div class="col-sm-6">
+                                    <label><a href= "javascript:void(0)" (click)="getNow()">วันที่</a> </label>
+                                    <input [(ngModel)]="model.datestockin" name="datestockin" type="date" class="form-control" placeholder="วันที่">
+                                </div>
+                                <div class="col-sm-6"> <label>บริษัท</label><a href="javascript:void(0)" (click)="showAddNewSupplier()" class="float-xs-right"> เพิ่มบริษัท</a>
+                                    <p-dropdown [options]="supOptions" [(ngModel)]="model.supid" filter="true" name="supid" [style]="{'width':'250px'}" (onChange)="onChange($event)">></p-dropdown>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" style="padding:20px">
+                        <div class="form-group row">
+
+                            <div class="col-sm-4"> <label>รหัสวัสดุ</label>
+                                <div>{{model.mcode}}</div>
+                            </div>
+                            <div class="col-sm-8"> <label>ชื่อวัสดุทันตกรรม</label> <a href="javascript:void(0)" (click)="showAddNewProduct()" class="float-xs-right"> เพิ่มวัสดุ</a>
+                                <select class="form-control" [(ngModel)]="model.mid" name="mid" #item (change)="setUnit(item.value)">
+  <option *ngFor="let m of mproducts" [value]="m.mid" #item>{{m.mname}}</option>  
+</select>
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="form-group row">
+
+
+                            <div class="col-sm-4"> จำนวน{{"("+munit+")"}}
+                                <input [(ngModel)]="model.numstockin" name="numstockin" type="number" class="form-control" placeholder="จำนวน" (change)="doCalPricelot()">
+                            </div>
+                            <div class="col-sm-4">
+                                ราคาต่อหน่วย
+                                <input [(ngModel)]="model.pricen" name="pricen" type="number" step="0.01" class="form-control" placeholder="ราคาต่อหน่วย" (change)="doCalPricelot()">
+                            </div>
+
+                            <div class="col-sm-4">
+                                ราคารวม
+                                <input [(ngModel)]="model.pricelot" name="pricelot" type="number" step="0.01" class="form-control" placeholder="ราคารวม">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-8">
+                                เดือนปีหมดอายุ(เช่น 201806)
+                                <input [(ngModel)]="model.expire" name="expire" type="number" class="form-control" placeholder="YYYYMM">
+                            </div>
+                            <div class="col-sm-4">
+                                <button type="button" class="btn btn-sm btn-info btn-block" (click)="doCalPricen()">คำนวณราคา/หน่วย</button>
+                            </div>
+                        </div>
+
+                        <div class="card-footer ">
+                            <div class="form-group row" align="center">
+                                <button type="submit" class="btn btn-primary">บันทึก</button>
+                                <button type="button" class="btn btn-default" (click)="onCancel()">ยกเลิก</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <hr>
+
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ลำดับ</th>
+                            <th>วันที่รับเข้า</th>
+                            <th>บริษัท</th>
+
+                            <th>ชื่อ</th>
+                            <th>จำนวนรับเข้า</th>
+                            <th>ราคาต่อหน่วย</th>
+                            <th>ราคา</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let s of (tempstockins);let i=index;">
+                            <td>{{s.datestockin}}</td>
+                            <td>{{s.supname}}</td>
+                            <td>{{s.mname}}</td>
+                            <td>{{s.numstockin}}</td>
+                            <td>{{s.pricen}}</td>
+                            <td>{{s.pricelot}}</td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+    </div>

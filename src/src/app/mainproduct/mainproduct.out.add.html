@@ -1,0 +1,120 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card" style="padding:20px">
+                <form class="form-inline">
+                    <div class="form-group row">
+
+                        <div class="col-xs-12 ">
+                            <input class="form-control" [(ngModel)]="txtSearch" name="txtSearch" (ngModelChange)="doLowertxt(txtSearch)" type="text" placeholder="Search">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <label class="custom-control custom-checkbox">
+  <input type="checkbox" [(ngModel)]="isStockFilter" class="custom-control-input"  (change)="doFilterStock($event)" >
+  <span class="custom-control-indicator"></span>
+  <span class="custom-control-description">จำนวนในStock > 0</span>
+</label>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let m of (mps|search:txtSearch:'mname')">
+                    <span class="tag tag-default tag-pill float-xs-right"> {{m.numnow}} </span>
+                    <a href="javascript:void(0)" (click)="setMid(m)"> {{m.mname}}  </a></li>
+
+            </ul>
+        </div>
+        <div class="col-sm-8">
+            <div class="panel" style="margin:5px">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">บันทึกเพิ่มรายการเบิกจ่ายวัสดุทันตกรรม</a>
+                    </li>
+                </ul>
+            </div>
+
+            <form (ngSubmit)="onSubmit()" #productlist="ngForm">
+
+
+                <div class="card" style="padding:20px;background-color:#d3d3d3">
+                    <div class="card-header ">
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+
+                                <label>วันที่</label><input [(ngModel)]="model.datestockout" name="datestockout" type="date" class="form-control" placeholder="วันที่">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="padding:20px">
+                    <div class="form-group row">
+
+
+                        <div class="col-sm-12"> <label>ชื่อวัสดุทันตกรรม</label>
+                            <select class="form-control" [(ngModel)]="model.mid" name="mid" #item (change)="setUnit(item.value)">
+  <option *ngFor="let m of mproducts"  [value]="m.mid" #item>{{m.mname}}</option>  
+</select>
+
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="receiver">ผู้เบิก</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" [(ngModel)]="model.receiver" name="receiver">
+  <option *ngFor="let c of (receivers)" [value]="c.rcid">{{c.rcname}}</option>  
+</select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-12"> จำนวนคงเหลือ {{numnow}} {{"("+munit+")"}} จำนวนเบิก{{"("+munit+")"}}
+                            <input [(ngModel)]="model.numstockout" name="numstockout" type="number" class="form-control" placeholder="จำนวน" (change)="doCheckNum()">
+                        </div>
+                    </div>
+
+                    <div class="card-footer ">
+                        <div class="form-group row" align="center">
+                            <button *ngIf="isEnable" type="submit" class="btn btn-primary">บันทึก</button>
+                            <button type="button" class="btn btn-default" (click)="onCancel()">ยกเลิก</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <hr>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ลำดับ</th>
+                        <th>วันที่เบิกจ่าย</th>
+
+
+                        <th>ชื่อ</th>
+                        <th>จำนวนเบิกจ่าย</th>
+                        <th>Lotnumber</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let s of (tempstockouts);let i=index;">
+                        <td>{{i+1}}</td>
+                        <td>{{s.datestockout}}</td>
+                        <td>{{s.mname}}</td>
+                        <td>{{s.numstockout}}</td>
+                        <td>{{s.lotnumber}}</td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+</div>

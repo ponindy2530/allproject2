@@ -1,0 +1,1057 @@
+<div id="navbar" class="navbar navbar-default    navbar-collapse       h-navbar ace-save-state">
+    <div class="navbar-container ace-save-state" id="navbar-container">
+        <div class="navbar-header pull-left">
+            <a href="index.html" class="navbar-brand">
+                <small>
+							<i class="fa fa-home"></i>
+							{{title}}
+						</small>
+            </a>
+
+            <!--<button class="pull-right navbar-toggle navbar-toggle-img collapsed" type="button" data-toggle="collapse" data-target=".navbar-buttons,.navbar-menu">
+						<span class="sr-only">Toggle user menu</span>
+
+						<img src="assets/images/avatars/user.jpg" alt="Jason's Photo" />
+					</button>-->
+
+            <button class="pull-right navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#sidebar">
+						<span class="sr-only">Toggle sidebar</span>
+
+						<span class="icon-bar"></span>
+
+						<span class="icon-bar"></span>
+
+						<span class="icon-bar"></span>
+					</button>
+        </div>
+
+
+        <nav role="navigation" class="navbar-menu pull-left collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <!--<li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								Overview
+	  		&nbsp;
+								<i class="ace-icon fa fa-angle-down bigger-110"></i>
+							</a>
+
+                    <ul class="dropdown-menu dropdown-light-blue dropdown-caret">
+                        <li>
+                            <a href="#">
+                                <i class="ace-icon fa fa-eye bigger-110 blue"></i> Monthly Visitors
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="ace-icon fa fa-user bigger-110 blue"></i> Active Users
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="ace-icon fa fa-cog bigger-110 blue"></i> Settings
+                            </a>
+                        </li>
+                    </ul>
+                </li>-->
+
+                <!--<li>
+                    <a href="#">
+                        <i class="ace-icon fa fa-envelope"></i> แจ้งซ่อม
+                        <span class="badge badge-warning">5</span>
+                    </a>
+                </li>-->
+            </ul>
+        </nav>
+    </div>
+    <!-- /.navbar-container -->
+</div>
+
+<div class="main-container ace-save-state" id="main-container">
+
+    <div id="sidebar" class="sidebar      h-sidebar                navbar-collapse collapse          ace-save-state">
+
+
+        <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+            <!--<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+                <button class="btn btn-success">
+							<i class="ace-icon fa fa-signal"></i>
+						</button>
+
+                <button class="btn btn-info">
+							<i class="ace-icon fa fa-pencil"></i>
+						</button>
+
+                <button class="btn btn-warning">
+							<i class="ace-icon fa fa-users"></i>
+						</button>
+
+                <button class="btn btn-danger">
+							<i class="ace-icon fa fa-cogs"></i>
+						</button>
+            </div>-->
+            <!--
+            <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+                <span class="btn btn-success"></span>
+
+                <span class="btn btn-info"></span>
+
+                <span class="btn btn-warning"></span>
+
+                <span class="btn btn-danger"></span>
+            </div>-->
+        </div>
+        <!-- /.sidebar-shortcuts -->
+
+        <ul class="nav nav-list">
+            <li class="hover">
+                <a routerLink="/" routerLinkActive="active">
+                    <i class="menu-icon fa fa-home"></i>
+                    <span class="menu-text"> หน้าหลัก </span>
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+            <li class="hover">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-hospital-o"></i>
+                    <span class="menu-text">คลังวัสดุทันตกรรม </span>
+
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+
+                <ul class="submenu">
+                    <li class="hover">
+                        <a routerLink="/main" routerLinkActive="active">
+                            <i class="menu-icon fa fa-caret-right"></i>บัญชีรายชื่อวัสดุทันตกรรม
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+                    <li class="hover">
+                        <a routerLink="/main/mainproductadd/0" routerLinkActive="active">
+                            <i class="menu-icon fa fa-caret-right"></i>เพิ่มรายการวัสดุใหม่
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+                    <li class="hover">
+                        <a routerLink="/Group123Sw" routerLinkActive="active">
+                            <i class="menu-icon fa fa-caret-right"></i>สายสนับสนุน
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+                    <li class="hover">
+                        <a routerLink="/Group1Sw" routerLinkActive="active">
+                            <i class="menu-icon fa fa-caret-right"></i>สายสนับสนุนกลุ่ม 1
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+                    <li class="hover">
+                        <a routerLink="/Group2Sw" routerLinkActive="active">
+                            <i class="menu-icon fa fa-caret-right"></i>สายสนับสนุนกลุ่ม 2
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+                    <li class="hover">
+                        <a routerLink="/Group3Sw" routerLinkActive="active">
+                            <i class="menu-icon fa fa-caret-right"></i>Back office (อำนวยการ)
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+                </ul>
+            </li>
+            <li class="hover">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-cubes"></i>
+                    <span class="menu-text"> บัญชีรับวัสดุทันตกรรม </span>
+
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+
+                <ul class="submenu">
+                    <li class="hover">
+                        <a routerLink="/main/mainproductin" routerLinkActive="active">
+                            <i class="menu-icon fa fa-caret-right"></i> รายการนำเข้าคลัง
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="hover">
+                        <a routerLink="/main/mainproductinadd/0" routerLinkActive="active">
+                            <i class="menu-icon fa fa-caret-right"></i> เพิ่มรายการนำเข้าวัสดุ
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+            
+                </ul>
+            </li>
+             <li class="hover">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-shopping-basket"></i>
+                    <span class="menu-text"> บัญชีเบิกจ่ายวัสดุทันตกรรม </span>
+
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+
+                <ul class="submenu">
+                    <li class="hover">
+                        <a routerLink="/main/mainproductout" routerLinkActive="active">
+                            <i class="menu-icon fa fa-caret-right"></i> รายการเบิกจ่าย
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="hover">
+                        <a routerLink="/main/mainproductoutadd/0" routerLinkActive="active">
+                            <i class="menu-icon fa fa-caret-right"></i> เพิ่มรายการเบิกจ่ายวัสดุ
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+            
+                </ul>
+            </li>
+         
+
+
+            <li class="hover">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-folder-open-o"></i>
+                    <span class="menu-text"> ข้อมูลรายงาน </span>
+
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+
+                <ul class="submenu">
+                    <li class="hover">
+                        <a routerLink="/Rpmovein" routerLinkActive="active">
+                            <i class="menu-icon fa fa-caret-right"></i> รายงานโยกย้ายภายใน สสจ.
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+                    <li class="hover">
+                        <a routerLink="/RepDatestart" routerLinkActive="active">
+                            <i class="menu-icon fa fa-caret-right"></i> รายงานวันที่เริ่มทำงาน
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+                </ul>
+            </li>
+            <li class="hover">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-cogs"></i>
+                    <span class="menu-text"> สำหรับผู้ดูแลระบบ </span>
+
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+
+                <ul class="submenu">
+                    <li class="hover">
+                        <a routerLink="/userstockout" routerLinkActive="active">
+                            <i class="menu-icon fa fa-caret-right"></i> จัดการผู้เบิกจ่าย
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+                   <li class="hover">
+                        <a routerLink="/supplier" routerLinkActive="active">
+                            <i class="menu-icon fa fa-caret-right"></i> จัดการบริษัท
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+                    <!--<li class="hover">
+                        <a routerLink="/GisSo" routerLinkActive="active">
+                            <i class="menu-icon fa fa-caret-right"></i> สายสนับสนุน
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+                    <li class="hover">
+                        <a routerLink="/Group1Sso" routerLinkActive="active">
+                            <i class="menu-icon fa fa-caret-right"></i> สายสนับสนุนราย สสอ.
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>-->
+                </ul>
+            </li>
+            <li class="hover" *ngIf="!_dt.isLog">
+                <a routerLink="/Login" routerLinkActive="active">
+                    <i class="menu-icon fa fa-lock"></i>
+                    <span class="menu-text"> Login </span>
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+            <li class="hover" *ngIf="_dt.isLog">
+                <a routerLink="/Logout" routerLinkActive="active">
+                    <i class="menu-icon fa fa-unlock"></i>
+                    <span class="menu-text"> ออกจากระบบ </span>
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+            <!--<li class="hover">
+                <a routerLink="/Repair" routerLinkActive="active">
+                    <i class="menu-icon fa fa-bell-o"></i>
+                    <span class="menu-text"> แจ้งปัญหา/แจ้งซ่อม
+                        <span class="badge badge-warning">5</span>
+                    </span>
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+            <li class="hover">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-user-secret"></i>
+                    <span class="menu-text">
+								รายงาน
+							</span>
+
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+
+                <ul class="submenu">
+                    <li class="active open hover">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i> 1. เพิ่มรายการครุภัณฑ์
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        <ul class="submenu">
+                            <li class="hover">
+                                <a routerLink="/Group1Sso" routerLinkActive="active">
+                                    <i class="menu-icon fa fa-caret-right"></i> สายสนับสนุนใน สอ.
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="hover">
+                                <a routerLink="/Group1Sw" routerLinkActive="active">
+                                    <i class="menu-icon fa fa-caret-right"></i> สายสนับสนุนกลุ่ม1 รพ.
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="hover">
+                                <a routerLink="/Group2Sw" routerLinkActive="active">
+                                    <i class="menu-icon fa fa-caret-right"></i> สายสนับสนุนกลุ่ม2 รพ.
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="hover">
+                                <a routerLink="/Group3Sw" routerLinkActive="active">
+                                    <i class="menu-icon fa fa-caret-right"></i> Back office (อำนวยการ)
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+
+                            <li class="hover">
+                                <a routerLink="/Amphome" routerLinkActive="active">
+                                    <i class="menu-icon fa fa-caret-right"></i> จังหวัด
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="hover">
+                                <a routerLink="/Group123Sw" routerLinkActive="active">
+                                    <i class="menu-icon fa fa-caret-right"></i> FTE2(สายสนับสนุน/Back Office(อำนวยการ)
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="hover">
+                                <a routerLink="/GroupFte" routerLinkActive="active">
+                                    <i class="menu-icon fa fa-caret-right"></i> กลุ่ม FTE รายโรงพยาบาล
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="hover">
+                                <a routerLink="/Gis" routerLinkActive="active">
+                                    <i class="menu-icon fa fa-caret-right"></i> Gis
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="hover">
+                                <a routerLink="/GisSo" routerLinkActive="active">
+                                    <i class="menu-icon fa fa-caret-right"></i> Gis so
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="hover">
+                                <a routerLink="/Fte" routerLinkActive="active">
+                                    <i class="menu-icon fa fa-caret-right"></i> Fte
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="active open hover">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i> 4. ข้อมูลพื้นฐาน
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        <ul class="submenu">
+                            <li class="hover">
+                                <a routerLink="/Company" routerLinkActive="active">
+                                    <i class="menu-icon fa fa-caret-right"></i> 4.1 เพิ่ม/แก้ไขรายชื่อบริษัท ร้านค้า
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="hover">
+                                <a href="javascript:void(0);" (click)="getAddnew()">
+                                    <i class="menu-icon fa fa-caret-right"></i> 4.2 เพิ่ม/แก้ไขรหัสฝ่าย
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="hover">
+                                <a href="javascript:void(0);" (click)="getAddnew()">
+                                    <i class="menu-icon fa fa-caret-right"></i> 4.3 เพิ่ม/แก้ไขบุคลากร-ผู้ดูแลระบบ
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <li class="hover">
+                        <a href="elements.html">
+                            <i class="menu-icon fa fa-caret-right"></i> Elements
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="hover">
+                        <a href="buttons.html">
+                            <i class="menu-icon fa fa-caret-right"></i> Buttons &amp; Icons
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="hover">
+                        <a href="content-slider.html">
+                            <i class="menu-icon fa fa-caret-right"></i> Content Sliders
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="hover">
+                        <a href="treeview.html">
+                            <i class="menu-icon fa fa-caret-right"></i> Treeview
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="hover">
+                        <a href="jquery-ui.html">
+                            <i class="menu-icon fa fa-caret-right"></i> jQuery UI
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="hover">
+                        <a href="nestable-list.html">
+                            <i class="menu-icon fa fa-caret-right"></i> Nestable Lists
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="hover">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i> Three Level Menu
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        <ul class="submenu">
+                            <li class="hover">
+                                <a href="#">
+                                    <i class="menu-icon fa fa-leaf green"></i> Item #1
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+
+                            <li class="hover">
+                                <a href="#" class="dropdown-toggle">
+                                    <i class="menu-icon fa fa-pencil orange"></i> 4th level
+                                    <b class="arrow fa fa-angle-down"></b>
+                                </a>
+
+                                <b class="arrow"></b>
+
+                                <ul class="submenu">
+                                    <li class="hover">
+                                        <a href="#">
+                                            <i class="menu-icon fa fa-plus purple"></i> Add Product
+                                        </a>
+
+                                        <b class="arrow"></b>
+                                    </li>
+
+                                    <li class="hover">
+                                        <a href="#">
+                                            <i class="menu-icon fa fa-eye pink"></i> View Products
+                                        </a>
+
+                                        <b class="arrow"></b>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="hover">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-list"></i>
+                    <span class="menu-text"> Tables </span>
+
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+
+                <ul class="submenu">
+                    <li class="hover">
+                        <a href="tables.html">
+                            <i class="menu-icon fa fa-caret-right"></i> Simple &amp; Dynamic
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="hover">
+                        <a href="jqgrid.html">
+                            <i class="menu-icon fa fa-caret-right"></i> jqGrid plugin
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="hover">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-pencil-square-o"></i>
+                    <span class="menu-text"> Forms </span>
+
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+
+                <ul class="submenu">
+                    <li class="hover">
+                        <a href="form-elements.html">
+                            <i class="menu-icon fa fa-caret-right"></i> Form Elements
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="hover">
+                        <a href="form-elements-2.html">
+                            <i class="menu-icon fa fa-caret-right"></i> Form Elements 2
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="hover">
+                        <a href="form-wizard.html">
+                            <i class="menu-icon fa fa-caret-right"></i> Wizard &amp; Validation
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="hover">
+                        <a href="wysiwyg.html">
+                            <i class="menu-icon fa fa-caret-right"></i> Wysiwyg &amp; Markdown
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="hover">
+                        <a href="dropzone.html">
+                            <i class="menu-icon fa fa-caret-right"></i> Dropzone File Upload
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="hover">
+                <a href="widgets.html">
+                    <i class="menu-icon fa fa-list-alt"></i>
+                    <span class="menu-text"> Widgets </span>
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+
+            <li class="hover">
+                <a href="calendar.html">
+                    <i class="menu-icon fa fa-calendar"></i>
+
+                    <span class="menu-text">
+								Calendar
+
+								<span class="badge badge-transparent tooltip-error" title="2 Important Events">
+									<i class="ace-icon fa fa-exclamation-triangle red bigger-130"></i>
+								</span>
+                    </span>
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+
+            <li class="hover">
+                <a href="gallery.html">
+                    <i class="menu-icon fa fa-picture-o"></i>
+                    <span class="menu-text"> Gallery </span>
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+
+            <li class="hover">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-tag"></i>
+                    <span class="menu-text"> More Pages </span>
+
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+
+                <ul class="submenu">
+                    <li class="hover">
+                        <a href="profile.html">
+                            <i class="menu-icon fa fa-caret-right"></i> User Profile
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="hover">
+                        <a href="inbox.html">
+                            <i class="menu-icon fa fa-caret-right"></i> Inbox
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="hover">
+                        <a href="pricing.html">
+                            <i class="menu-icon fa fa-caret-right"></i> Pricing Tables
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="hover">
+                        <a href="invoice.html">
+                            <i class="menu-icon fa fa-caret-right"></i> Invoice
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="hover">
+                        <a href="timeline.html">
+                            <i class="menu-icon fa fa-caret-right"></i> Timeline
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="hover">
+                        <a href="search.html">
+                            <i class="menu-icon fa fa-caret-right"></i> Search Results
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="hover">
+                        <a href="email.html">
+                            <i class="menu-icon fa fa-caret-right"></i> Email Templates
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="hover">
+                        <a href="login.html">
+                            <i class="menu-icon fa fa-caret-right"></i> Login &amp; Register
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="hover">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-file-o"></i>
+
+                    <span class="menu-text">
+								Other Pages
+
+								<span class="badge badge-primary">5</span>
+                    </span>
+
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+
+                <ul class="submenu">
+                    <li class="hover">
+                        <a href="faq.html">
+                            <i class="menu-icon fa fa-caret-right"></i> FAQ
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="hover">
+                        <a href="error-404.html">
+                            <i class="menu-icon fa fa-caret-right"></i> Error 404
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="hover">
+                        <a href="error-500.html">
+                            <i class="menu-icon fa fa-caret-right"></i> Error 500
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="hover">
+                        <a href="grid.html">
+                            <i class="menu-icon fa fa-caret-right"></i> Grid
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="hover">
+                        <a href="blank.html">
+                            <i class="menu-icon fa fa-caret-right"></i> Blank Page
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+                </ul>
+            </li>
+            <li class="hover">
+                <a routerLink="/Login" routerLinkActive="active">
+                    <i class="menu-icon fa fa-lock"></i>
+                    <span class="menu-text"> เข้าสู้ระบบ </span>
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+            <li class="hover">
+                <a routerLink="/Logout" routerLinkActive="active">
+                    <i class="menu-icon fa fa-unlock"></i>
+                    <span class="menu-text"> ออกจากระบบ </span>
+                </a>
+
+                <b class="arrow"></b>
+            </li>-->
+        </ul>
+        <!-- /.nav-list -->
+    </div>
+
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="page-content">
+                <!-- /.ace-settings-container -->
+                <router-outlet></router-outlet>
+                <!-- /.page-header -->
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- PAGE CONTENT BEGINS -->
+                        <div class="invisible">
+                            <!--<button data-target="#sidebar2" type="button" class="pull-left menu-toggler navbar-toggle">
+										<span class="sr-only">Toggle sidebar</span>
+
+										<i class="ace-icon fa fa-dashboard white bigger-125"></i>
+									</button>-->
+                            <!--
+                            <div id="sidebar2" class="sidebar responsive menu-min ace-save-state">
+                                <ul class="nav nav-list">
+                                    <li>
+                                        <a routerLink="/" routerLinkActive="active">
+                                            <i class="menu-icon fa fa-tachometer"></i>
+                                            <span class="menu-text"> หน้าหลัก </span>
+                                        </a>
+
+                                        <b class="arrow"></b>
+                                    </li>-->
+
+                            <!--<li>
+                                        <a href="#">
+                                            <i class="menu-icon fa fa-list-alt"></i>
+                                            <span class="menu-text">Widgets</span>
+                                        </a>
+
+                                        <b class="arrow"></b>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <i class="menu-icon fa fa-calendar"></i>
+
+                                            <span class="menu-text">
+														Calendar
+														<span title="" class="badge badge-transparent tooltip-error" data-original-title="2 Important Events">
+															<i class="ace-icon fa fa-exclamation-triangle red bigger-130"></i>
+														</span>
+                                            </span>
+                                        </a>
+
+                                        <b class="arrow"></b>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <i class="menu-icon fa fa-picture-o"></i>
+                                            <span class="menu-text"> Gallery </span>
+                                        </a>
+
+                                        <b class="arrow"></b>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-toggle" href="#">
+                                            <i class="menu-icon fa fa-tag"></i>
+                                            <span class="menu-text"> More Pages </span>
+
+                                            <b class="arrow fa fa-angle-down"></b>
+                                        </a>
+
+                                        <b class="arrow"></b>
+
+                                        <ul class="submenu">
+                                            <li>
+                                                <a href="#">
+                                                    <i class="menu-icon fa fa-caret-right"></i> User Profile
+                                                </a>
+
+                                                <b class="arrow"></b>
+                                            </li>
+
+                                            <li>
+                                                <a href="#">
+                                                    <i class="menu-icon fa fa-caret-right"></i> Inbox
+                                                </a>
+
+                                                <b class="arrow"></b>
+                                            </li>
+
+                                            <li>
+                                                <a href="#">
+                                                    <i class="menu-icon fa fa-caret-right"></i> Pricing Tables
+                                                </a>
+
+                                                <b class="arrow"></b>
+                                            </li>
+
+                                            <li>
+                                                <a href="#">
+                                                    <i class="menu-icon fa fa-caret-right"></i> Invoice
+                                                </a>
+
+                                                <b class="arrow"></b>
+                                            </li>
+
+                                            <li>
+                                                <a href="#">
+                                                    <i class="menu-icon fa fa-caret-right"></i> Timeline
+                                                </a>
+
+                                                <b class="arrow"></b>
+                                            </li>
+
+                                            <li>
+                                                <a href="#">
+                                                    <i class="menu-icon fa fa-caret-right"></i> Email Templates
+                                                </a>
+
+                                                <b class="arrow"></b>
+                                            </li>
+
+                                            <li>
+                                                <a href="#">
+                                                    <i class="menu-icon fa fa-caret-right"></i> Login &amp; Register
+                                                </a>
+
+                                                <b class="arrow"></b>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-toggle" href="#">
+                                            <i class="menu-icon fa fa-file-o"></i>
+
+                                            <span class="menu-text">
+														Other Pages
+														<span class="badge badge-primary">5</span>
+                                            </span>
+
+                                            <b class="arrow fa fa-angle-down"></b>
+                                        </a>
+
+                                        <b class="arrow"></b>
+
+                                        <ul class="submenu">
+                                            <li>
+                                                <a href="#">
+                                                    <i class="menu-icon fa fa-caret-right"></i> FAQ
+                                                </a>
+
+                                                <b class="arrow"></b>
+                                            </li>
+
+                                            <li>
+                                                <a href="#">
+                                                    <i class="menu-icon fa fa-caret-right"></i> Error 404
+                                                </a>
+
+                                                <b class="arrow"></b>
+                                            </li>
+
+                                            <li>
+                                                <a href="#">
+                                                    <i class="menu-icon fa fa-caret-right"></i> Error 500
+                                                </a>
+
+                                                <b class="arrow"></b>
+                                            </li>
+
+                                            <li>
+                                                <a href="#">
+                                                    <i class="menu-icon fa fa-caret-right"></i> Grid
+                                                </a>
+
+                                                <b class="arrow"></b>
+                                            </li>
+
+                                            <li>
+                                                <a href="#">
+                                                    <i class="menu-icon fa fa-caret-right"></i> Blank Page
+                                                </a>
+
+                                                <b class="arrow"></b>
+                                            </li>
+                                        </ul>
+                                    </li>-->
+                            <!--</ul>-->
+                            <!-- /.nav-list -->
+
+                            <!--<div class="sidebar-toggle sidebar-collapse">
+                                    <i id="sidebar3-toggle-icon" class="ace-icon fa fa-angle-double-right ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+                                </div>
+                            </div>-->
+                            <!-- .sidebar -->
+                        </div>
+
+
+                        <!-- PAGE CONTENT ENDS -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.page-content -->
+        </div>
+    </div>
+    <!-- /.main-content -->
+
+    <div class="footer">
+        <div class="footer-inner">
+            <div class="footer-content">
+                <span class="bigger-120">
+							<span class="blue bolder">Ace</span> Application &copy; 2013-2014
+                </span>
+
+                &nbsp; &nbsp;
+                <span class="action-buttons">
+							<a href="#">
+								<i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+							</a>
+
+							<a href="#">
+								<i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
+							</a>
+
+							<a href="#">
+								<i class="ace-icon fa fa-rss-square orange bigger-150"></i>
+							</a>
+						</span>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+        <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+    </a>
+</div>

@@ -1,0 +1,42 @@
+
+<div class="container ">
+  <nav class="navbar  bg-faded fb-header"  style="background-color:#3b5998;
+  color:white ;margin-bottom:10px;  ">
+  <a class="navbar-brand" href="javascript:void(0)" (click) ="toggleSideNav()" ><span style="color:white">Menu</span></a>
+  <ul class="nav navbar-nav fb-header">
+    
+
+     
+   
+    <li class="nav-item float-xs-right">
+    
+      <a  *ngIf="! _dt.isLog"  class="nav-link" routerLink="/login" routerLinkActive="active"><span style="color:white"> Login</span></a>
+      <a  *ngIf=" _dt.isLog"  class="nav-link" (click)="logout()" routerLinkActive="active"><span style="color:white">Logout</span></a>
+    </li>
+ <li class="nav-item active float-xs-right">
+      <a   *ngIf=" _dt.isLog" class="nav-link" href="#">{{_dt.profile.hcode}} : {{_dt.profile.hname}} </a>
+    </li>
+  </ul>
+  
+</nav>
+<div class="row" >
+    <div [ngClass]="sidebar" *ngIf="_dt.isSide" >
+
+<p-accordion>
+    <p-accordionTab header="วัสดุทันตกรรม">
+        <div><a class="nav-link" routerLink="/main" routerLinkActive="active">บัญชีรายการวัสดุทันตกรรม</a></div>
+    </p-accordionTab>
+    <p-accordionTab header="Header 2">
+        Content 2
+    </p-accordionTab>
+    <p-accordionTab header="Header 3">
+        Content 3    
+    </p-accordionTab>
+</p-accordion>
+ </div>
+
+  <div [ngClass]="_dt.contentcol">
+<router-outlet></router-outlet>
+</div>
+</div>
+</div>

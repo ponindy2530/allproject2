@@ -1,0 +1,115 @@
+<h3 class="first">Basic</h3>
+
+
+
+<p-panel header="เลือกช่วงเวลา" [toggleable]="true" [collapsed]="true">
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <label class="col-form-label" for="mcode">  ปีงบประมาณ</label>
+            <p-dropdown [options]="thyears" (onChange)="getYear($event)" [(ngModel)]="y1"> </p-dropdown>
+
+            <label>    เดือนเริ่มต้น : </label>
+            <p-dropdown [options]="thmonths" [(ngModel)]="m1"></p-dropdown>
+
+            <label>    ถึง :</label>
+            <p-dropdown [options]="thmonths" [(ngModel)]="m2"></p-dropdown>
+            <button type="button" (click)="doFillterMonth()">กรอง</button>
+        </div>
+    </nav>
+
+
+
+</p-panel>
+<div class="card">
+    <div class="card-block">
+
+        <p-tabView>
+            <p-tabPanel header="มูลค่ารับของ">
+
+
+                <p-dataTable [value]="budgetIns">
+                    <p-column field="mid" header="รหัส" [sortable]="true"></p-column>
+                    <p-column field="mcode" header="รหัสวัสดุ" [sortable]="true" [filter]="true"></p-column>
+                    <p-column field="mname" header="ชื่อวัสดุ" [sortable]="true" [filter]="true"></p-column>
+
+
+                    <p-column field="munit" header="หน่วยนับ"></p-column>
+                    <p-column field="numstockin" header="จำนวนรับเข้า">
+                        <template let-p="rowData" pTemplate="body">
+                            <div *ngIf="p.numstockin>0">{{p.numstockin}}</div>
+                        </template>
+
+                    </p-column>
+                    <p-column field="pricelot" header="มูลค่าจัดซื้อ">
+                        <template let-p="rowData" pTemplate="body">
+                            <div>{{p.pricelot}}</div>
+                        </template>
+
+                    </p-column>
+
+                </p-dataTable>
+            </p-tabPanel>
+            <p-tabPanel header="มูลค่าจ่ายของ">
+
+                <div class="card">
+                    <div class="card-block pull-right"> <label for="xx">เลือกผู้เบิก
+
+
+                        <p-dropdown name="xx" [options]="selectReceivers" [(ngModel)]="rcid" [style]="{'width':'250px'}" (onChange)="onSelectRc($event)" ></p-dropdown></label>
+                    </div>
+                </div>
+                <p-dataTable [value]="budgetOuts">
+
+                    <p-column field="mid" header="รหัส" [sortable]="true"></p-column>
+                    <p-column field="mcode" header="รหัสวัสดุ" [sortable]="true" [filter]="true"></p-column>
+                    <p-column field="mname" header="ชื่อวัสดุ" [sortable]="true" [filter]="true"></p-column>
+
+
+                    <p-column field="munit" header="หน่วยนับ"></p-column>
+                    <p-column field="numstockout" header="จำนวนเบิก">
+                        
+
+                    </p-column>
+                    <p-column field="priceout" header="มูลค่าเบิกจ่าย">
+                       
+
+                    </p-column>
+           
+                    <p-footerColumnGroup>
+                        <p-row>
+                            <p-column footer="Totals:" colspan="4"></p-column>
+                            <p-column footer="{{getSum('numstockout')}}"></p-column>
+                            <p-column footer="{{getSum('priceout')}}" ></p-column>
+                        </p-row>
+                    </p-footerColumnGroup>
+                </p-dataTable>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of budgetOuts">
+      <th scope="row">1</th>
+      <td>{{p.mname}}</td>
+      <td>{{p.numstockout}}</td>
+      <td>{{p.priceout}}</td>
+    </tr>
+  
+  </tbody>
+</table>
+
+            </p-tabPanel>
+            <p-tabPanel header="มูลค่าคงคลัง">
+                Content 3
+            </p-tabPanel>
+        </p-tabView>
+        This is some text within a card block.
+    </div>
+</div>

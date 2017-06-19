@@ -1,0 +1,38 @@
+<h3 class="first">Basic</h3>
+
+
+<p>
+  report works!
+</p>
+<p-growl [value]="msgs"></p-growl>
+    
+<p-fileUpload name="demo[]" url="http://dmfzero.com/myslim/uploads/" (onUpload)="onUpload($event)" 
+        multiple="multiple" accept="image/*" maxFileSize="1000000">
+    <template pTemplate type="content">
+        <ul *ngIf="uploadedFiles.length">
+            <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+        </ul>
+    </template>        
+</p-fileUpload>
+
+<p-dataTable [value]="stockinouts">
+  <p-column field="datestock" header="วันที่รับ-เบิกจ่าย"  [sortable]="true" [filter]="true" ></p-column>
+     <p-column field="mcode" header="รหัสวัสดุ"  [sortable]="true" [filter]="true" ></p-column>
+   <p-column field="mname" header="ชื่อวัสดุ"  [sortable]="true" [filter]="true" ></p-column>
+ 
+    
+    <p-column field="numnow" header="จำนวนในStock"></p-column>
+    <p-column field="numstockin" header="จำนวนรับของ">
+ <template let-p="rowData" pTemplate ="body">
+           <div *ngIf="p.numstockin>0" >{{p.numstockin}}</div>
+        </template>
+      
+    </p-column>
+    <p-column field="numstockout" header="จำนวนจ่ายของ">
+ <template let-p="rowData" pTemplate ="body">
+           <div *ngIf="p.numstockout>0" >{{p.numstockout}}</div>
+        </template>
+
+    </p-column>
+     <p-column field="reciever" header="ผู้เบิกของ"></p-column>
+</p-dataTable>

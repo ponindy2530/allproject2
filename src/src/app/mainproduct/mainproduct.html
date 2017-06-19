@@ -1,0 +1,213 @@
+<ul class="nav nav-pills" style="margin:10px">
+
+<li class="nav-item">
+  <a class="nav-link active btn btn-secondary" routerLink="../mainproductadd/0" routerLinkActive="active">เพิ่มรายการ</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link active btn btn-secondary" routerLink="../mainproductmin" routerLinkActive="active">MinLevel</a>
+</li>
+<li class="nav-item  float-xs-right pull-right">
+  <button class="pull-right" type="button" pButton icon="fa-file-o" iconPos="left" label="CSV" (click)="dt.exportCSV()"></button>
+
+</li>
+</ul>
+<p-growl [value]="msgs"></p-growl>
+
+<p-fileUpload name="myfile[]" url="http://localhost:3000/upload" multiple="multiple"
+        accept="image/*" maxFileSize="1000000">
+        <template pTemplate="toolbar">
+            <div>Upload 3 Files</div>
+        </template>  
+        <template let-file pTemplate="file">
+            <div>Custom UI to display a file</div>
+        </template> 
+        <template pTemplate="content">
+            <div>Custom UI to manage uploaded files</div>
+        </template>  
+</p-fileUpload>
+
+<p-fileUpload name="file" url="http://dmfzero.com/api/amat/popuploadprimeng.php" (onUpload)="onUpload($event)" 
+        accept="image/*"  
+        (onBeforeUpload)="prepRequest($event)"
+        >
+    <template pTemplate type="content">
+        <ul *ngIf="uploadedFiles.length">
+            <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+        </ul>
+    </template>        
+</p-fileUpload>
+<p-dataTable #dt rowHover="true" (onRowClick)="doRowClick($event)" sortField="mgroup" rowGroupMode="rowspan" [value]="mproducts"
+  [rows]="20" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[5,10,20]">
+
+  <header>บัญชีรายการวัสดุทันตกรรม </header>
+
+  <p-column header="ลำดับ" [style]="{'width':'60px'}">
+
+
+    <template let-col let-rowData="rowData" let-rowIndex="rowIndex" pTemplate="body">
+      {{rowIndex+1}}
+    </template>
+  </p-column>
+  <p-column field="mgroup" header="Group" [sortable]="true" [filter]="true" filterMatchMode="contains" [style]="{'width':'160px'}">
+
+
+  </p-column>
+  <p-column field="mcode" header="รหัสวัสดุ" [sortable]="true" [filter]="true" filterMatchMode="contains" [style]="{'width':'160px'}"></p-column>
+  <p-column field="mname" header=" ชื่อวัสดุ" [sortable]="true" [filter]="true" filterMatchMode="contains" >
+
+
+  </p-column>
+    <p-column field="stockvalue" header=" มูลค่าคงคลัง" [sortable]="true"  >
+
+
+  </p-column>
+  <p-column field="catname" header="หมวดหมู่วัสดุ" [style]="{'overflow':'visible'}" filterMatchMode="equals" filterMatchMode="equals">
+    <template pTemplate="filter" let-col>
+      <p-dropdown [options]="categories" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)"
+        styleClass="ui-column-filter"></p-dropdown>
+    </template>
+  </p-column>
+  <p-column field="numnow" header="จำนวนในStock" [style]="{'width':'80px'}"></p-column>
+  <p-column styleClass="col-button" [style]="{'width':'80px'}">
+    <template pTemplate="header">
+      ปรับปรุง
+    </template>
+    <template let-p="rowData" pTemplate="body">
+      <button type="button" class="btn btn-sm btn-info" (click)="doMainproduct(p,1)">Edit</button>
+    </template>
+  </p-column>
+
+
+  <p-column styleClass="col-button" [style]="{'width':'60px'}">
+    <template pTemplate="header">
+      ลบ
+    </template>
+    <template let-r="rowData" pTemplate="body">
+      <button class="btn btn-sm btn-danger" (click)="confirmDelete(r)">Del</button>
+    </template>
+  </p-column>
+</p-dataTable>
+
+
+<form (ngSubmit)="onSubmitSaveModel()" #productlist="ngForm">
+  <p-dialog [width]="800" header="รายละเอียดวัสดุทันตกรรม" [(visible)]="displayDialog" [responsive]="true" showEffect="fade"
+    [modal]="true">
+    <div class="ui-grid ui-grid-responsive ui-fluid">
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4"><label for="mcode">รหัสวัสดุ</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="mcode" name="mcode" [(ngModel)]="model.mcode" /></div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4"><label for="mname">ชื่อวัสดุ</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="mname" name="mname" [(ngModel)]="model.mname" /></div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4"><label for="catid">หมวดหมู่</label></div>
+        <div class="ui-grid-col-8">
+          <select class="form-control" [(ngModel)]="model.catid" name="catid" #mycat (change)="doCat($event)">
+  <option *ngFor="let c of (categoriesOptions)" [value]="c.catid">{{c.catname}}</option>  
+  </select>
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4"><label for="munit">หน่วยนับ</label></div>
+        <div class="ui-grid-col-8">
+          <p-autoComplete [(ngModel)]="model.munit" name="munit" [suggestions]="funits" (completeMethod)="searchUnit($event)" field="munit"></p-autoComplete>
+
+        </div>
+
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4"><label for="numnow">จำนวน</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="numnow" name="numnow" [(ngModel)]="model.numnow" /></div>
+      </div>
+    </div>
+    <footer>
+      <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+
+        <button type="submit" pButton icon="fa-check" label="Save"></button>
+      </div>
+    </footer>
+  </p-dialog>
+</form>
+
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>
+
+<p-dialog [width]="870" header="{{showProduct && showProduct['mname']}} " [(visible)]="displayDialogShowProduct" [responsive]="true"
+  showEffect="fade" [modal]="true">
+  <div><h5> รหัสวัสดุ {{showProduct && showProduct['mcode']  }} </h5></div>
+  <div style="margin:10px"> <h4> ยอดยกมา  {{showProduct && showProduct['historical59']}} {{ showProduct && showProduct['munit']}}  มูลค่า {{showProduct && showProduct['historicalvalue59']}} บาท
+</h4></div>
+<p-dataTable #dt2 [value]="productinouts" [rows]="10" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[5,10,20]">
+
+  <header>รายการวัสดุทันตกรรม </header>
+
+  <p-column header="ลำดับ" [style]="{'width':'60px'}">
+
+
+    <template let-col let-rowData="rowData" let-rowIndex="rowIndex" pTemplate="body">
+      {{rowIndex+1}}
+    </template>
+  </p-column>
+
+
+  <p-column field="datestock" header="วันที่ทำรายการ" [sortable]="true"></p-column>
+
+  <p-column field="numstockin" header="จำนวนรับ">
+    <template let-p="rowData" pTemplate="body">
+<div *ngIf="p['account']=='in'">{{p['numstockin']}}</div>
+ </template>
+  </p-column>
+  <p-column field="pricen" header="ราคา/น"></p-column>
+         <template let-p="rowData" pTemplate="body">
+<div *ngIf="p['account']=='in'">{{p['pricen']}}</div>
+ </template>
+  <p-column field="pricelot" header="มูลค่า">
+    <template let-p="rowData" pTemplate="body">
+<div *ngIf="p['account']=='in'">{{p['pricelot']}}</div>
+ </template>
+  </p-column>
+  <p-column field="supname" header="บริษัท">
+    <template let-p="rowData" pTemplate="body">
+<div *ngIf="p['account']=='in'">{{p['supname']}}</div>
+ </template>
+  </p-column>
+  
+
+  <p-column field="numstockout" header="จำนวนเบิกจ่าย" [style]="{'color':'#ff00aa'}">
+    <template let-p="rowData" pTemplate="body">
+<div *ngIf="p['account']=='out'">{{p['numstockout']}}</div>
+
+ </template>
+  </p-column>
+  <p-column field="priceout" header="มูลค่า" [style]="{'color':'#ff00aa'}">
+       <template let-p="rowData" pTemplate="body">
+<div *ngIf="p['account']=='out'">{{p['priceout']}}</div>
+ </template>
+  </p-column>
+  <p-column field="receiver" header="ผู้เบิกจ่าย" [sortable]="true" [style]="{'color':'#ff00aa'}">
+<template let-p="rowData" pTemplate="body">
+<div *ngIf="p['account']=='out'">{{p['receiver']}}</div>
+
+ </template>
+  </p-column> 
+  <p-column header="จำนวนคงคลัง" [style]="{'color':'#0080ff'}">
+ <template let-p="rowData" pTemplate="body">
+{{(p['stocknumin']*1)+(p['stocknumout']*1)}}
+
+ </template>
+
+  </p-column>
+  <p-column header="มูลค่าคงคลัง" [style]="{'color':'#0080ff'}">
+
+ <template let-p="rowData" pTemplate="body">
+{{(p['stockvaluein']*1)+(p['stockvalueout']*1)}}
+
+ </template>
+
+  </p-column>
+
+  
+</p-dataTable>
+
+</p-dialog>

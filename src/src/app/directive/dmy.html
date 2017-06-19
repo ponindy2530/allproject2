@@ -1,0 +1,36 @@
+ <div class="row">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <select class="form-control" ([ngChange])="getdate();" ([ngModel])="dayVar" required="">
+                            <option value="">
+                                - วัน -
+                            </option>
+                            <option *ngFor="let d of dArray" value="{{d}}">
+                                {{d}}
+                            </option>
+                        </select>
+                        <select class="form-control" ng-change="getdate();" ng-model="sM1" required="">
+                            <option value="">
+                                - เดือน -
+                            </option>
+                            <option  *ngFor="let m of dMonth" value="{{m.mCode}}">
+                                {{m.mName}}
+                            </option>
+                        </select>
+                        <select class="form-control" ([ngChange])="getdate();" ([ngModel])="yearVar">
+                            <option value="">
+                                - ปี -
+                            </option>
+                            <option ng-repeat="y in yArray" value="{{y}}">
+                                {{y}}
+                            </option>
+                        </select>
+                    </div>
+                    <input ng-model="formData.start_date" type="text"/>
+                </div>
+                <div class="col-md-4">
+                </div>
+            </div>
+            

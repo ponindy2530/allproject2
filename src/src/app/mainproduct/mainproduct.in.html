@@ -1,0 +1,47 @@
+
+<ul class="nav nav-pills" style="margin:10px">
+<li class="nav-item">
+  <a class="nav-link active btn btn-secondary" routerLinkActive="active" routerLink="../mainproductinadd/0">รับของเข้าคลัง</a>
+
+</li>
+
+
+
+</ul>
+
+
+<p-dataTable #dt [value]="stockins" [rows]="20" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[5,10,20]">
+
+  <header>บัญชีรายการรับวัสดุทันตกรรม </header>
+
+  <p-column header="ลำดับ" [style]="{'width':'60px'}">
+
+
+    <template let-col let-rowData="rowData" let-rowIndex="rowIndex" pTemplate="body">
+      {{rowIndex+1}}
+    </template>
+  </p-column>
+  <p-column field="mgroup" header="Group" [sortable]="true" [filter]="true" filterMatchMode="contains" [style]="{'width':'160px'}">
+    <template let-col let-row="rowData" pTemplate="body">
+      <div>
+        <span>{{row[col.field]}}</span>
+      </div>
+    </template>
+
+  </p-column>
+  <p-column field="datestockin" header="วันที่รับเข้า" [sortable]="true" [filter]="true" filterMatchMode="contains" [style]="{'width':'160px'}"></p-column>
+
+  <p-column field="mcode" header="รหัสวัสดุ" [sortable]="true" [filter]="true" filterMatchMode="contains" [style]="{'width':'160px'}"></p-column>
+  <p-column field="mname" header="ชื่อวัสดุ" [sortable]="true" [filter]="true" filterMatchMode="contains" [style]="{'width':'160px'}"></p-column>
+  <p-column field="numstockin" header="จำนวนรับเข้า" [style]="{'width':'160px'}"></p-column>
+  
+  <p-column styleClass="col-button" [style]="{'width':'60px'}">
+    <template pTemplate="header">
+      ลบ
+    </template>
+    <template let-r="rowData" pTemplate="body">
+      <button class="btn btn-sm btn-danger" (click)="confirmDelete(r)">Del</button>
+    </template>
+  </p-column>
+</p-dataTable>
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>

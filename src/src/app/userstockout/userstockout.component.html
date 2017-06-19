@@ -1,0 +1,62 @@
+
+<ul class="nav nav-pills" style="margin:10px">
+
+<li class="nav-item">
+  <a class="nav-link active btn btn-secondary" routerLink="useradd/0" routerLinkActive="active">เพิ่มรายการ</a>
+</li>
+</ul>
+<p>
+  <p-dataTable [value]="users">
+    <p-column field="rcid" header="rcid"></p-column>
+    <p-column field="rcname" header="rcname"></p-column>
+    <p-column field="rctype" header="rctype"></p-column>
+   <p-column styleClass="col-button" [style]="{'width':'80px'}">
+    <template pTemplate="header">
+      ปรับปรุง
+    </template>
+    <template let-p="rowData" pTemplate="body">
+      <button type="button" class="btn btn-sm btn-info" (click)="doEditMain(p,1)">Edit</button>
+    </template>
+  </p-column>
+
+
+  <p-column styleClass="col-button" [style]="{'width':'60px'}">
+    <template pTemplate="header">
+      ลบ
+    </template>
+    <template let-r="rowData" pTemplate="body">
+      <button class="btn btn-sm btn-danger" (click)="confirmDelete(r)">Del</button>
+    </template>
+  </p-column>
+</p-dataTable>
+</p>
+
+<form (ngSubmit)="onSubmitSaveModel()" #productlist="ngForm">
+  <p-dialog [width]="800" header="ผู้เบิกของ" [(visible)]="displayDialog" [responsive]="true" showEffect="fade"
+    [modal]="true">
+    <div class="ui-grid ui-grid-responsive ui-fluid">
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4"><label for="rcid">รหัสผู้เบิก</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="rcid" name="rcid" [(ngModel)]="model.rcid" /></div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4"><label for="rcname">ชื่อผู้เบิก</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="rcname" name="rcname" [(ngModel)]="model.rcname" /></div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4"><label for="selectedvalue">ประเภท</label></div>
+        <div class="ui-grid-col-8">
+       <p-dropdown [options]="rctypes" name="rctype" [style]="{'width':'150px'}" [(ngModel)]="model.rctype"></p-dropdown>
+        </div>
+      </div>
+  
+    </div>
+   
+      <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+
+        <button type="submit" pButton icon="fa-check" label="Save"></button>
+      </div>
+  
+  </p-dialog>
+</form>
+

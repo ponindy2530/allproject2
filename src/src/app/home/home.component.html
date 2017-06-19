@@ -1,0 +1,40 @@
+<p align="center">
+  Dental Product App 4 Hospital since 2017
+
+</p>
+<h1>{{ title }}</h1>
+
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+
+
+
+<div class="row" >
+    <div class="col-sm-6">
+    <div>  ปริมาณการนำเข้ารายเดือน </div>
+
+<p-schedule [events]="events"></p-schedule>
+
+    </div>
+    <div class="col-sm-6" >
+      <p-chart type="bar" [data]="data"></p-chart>
+      </div>
+   
+  </div>
+
+
+<!--<div class="row" >
+ <div class="col-sm-12" style=" padding:10px; background-color:lavender;">
+ <div >  <ng2-map [center]="center" [zoom]="11">
+ <marker *ngFor="let pos of hospoints" position="{{pos.lon}},{{pos.lat}}" [label]="pos.hname" ></marker>
+<polygon [editable]="true"
+      [paths]="paths"
+      [strokeColor]="'#FFC107'"
+      [strokeWeight]="0.1"
+       [fillColor]="'#FFC107'"
+      [fillOpacity]="0.35"></polygon>
+
+ </ng2-map>
+ </div>
+</div>-->
+ 
